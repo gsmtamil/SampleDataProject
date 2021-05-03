@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="simpleApp">
+  <head>
+    <title>Simple Data Dashboard</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Loads amCharts 4 -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <link rel="stylesheet" href="src/css/simple.css" />
+
+    <script
+      type="text/javascript"
+      src="src/lib/angular/angular.min.js"
+    ></script>
+
+    <!-- ng Table -->
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
+
+    <!-- module -->
+    <script type="text/javascript" src="src/js/module.js"></script>
+    <!-- controller -->
+    <!-- <script src="src/js/directives/chart.js"></script> -->
+    <script
+      type="text/javascript"
+      src="src/js/controllers/dashboard-ctrl.js"
+    ></script>
+  </head>
+  <body ng-controller="DashboardCtrl">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav topnav-centered">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" style="text-align: center">
+              Simple Data Dashboard
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h2 class="card-head">Status Wise Count</h2>
+          <div>
+            <div id="status_wise_count" class="chartHeight"></div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h2 class="card-head">Cource Wise Completed Count</h2>
+
+          <div>
+            <div id="course_wise_completion" class="chartHeight"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column2">
+        <div class="card">
+          <h2 class="card-head">Country Wise Completed Count</h2>
+
+          <div>
+            <div id="country_wise_completion" class="chartHeight2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="column2">
+        <div class="card">
+          <h2 class="card-head">Year Wise Expiration Count</h2>
+          <div>
+            <div id="year_wise_expiration" class="chartHeight2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="column2">
+        <div class="card">
+          <h2 class="card-head">Year Wise Completed count</h2>
+
+          <div>
+            <div id="year_wise_completion" class="chartHeight2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column3">
+        <div class="card">
+          <h2 class="card-head">Training Provider Wise Completion</h2>
+          <div>
+            <div
+              id="training_provider_wise_completion"
+              class="chartHeight3"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="row">
+      <div class="column3">
+        <div class="card">
+          <h2 class="card-head">All Sample data in Table View</h2>
+
+          <div>
+            <table
+              ng-table="tableParams"
+              class="table table-condensed table-bordered table-striped"
+            >
+              <tr ng-repeat="row in $data">
+                <td data-title="'EmployeeId'">{{row.employeeId}}</td>
+                <td data-title="'First Name'">{{row.firstName}}</td>
+                <td data-title="'Course Name'">{{row.courseName}}</td>
+                <td data-title="'Course Id'">{{row.courceId}}</td>
+                <td
+                  data-title="'Training Provider'"
+                  filter="{ trainingProvider: 'text'}"
+                >
+                  {{row.trainingProvider}}
+                </td>
+                <td data-title="'CompletedAt'">
+                  {{row.completedAt | date:'MM/dd/yyyy'}}
+                </td>
+                <td data-title="'ExpireAt'">
+                  {{row.ExpireAt | date:'MM/dd/yyyy'}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
